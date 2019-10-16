@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 2.8.3)
 project(station_map)
+set(CMAKE_CXX_STANDARD 14)
 
 find_package(catkin REQUIRED COMPONENTS
   pcl_ros
@@ -15,6 +16,8 @@ find_package(catkin REQUIRED COMPONENTS
 
 
 find_package(OpenCV REQUIRED)
+
+find_package(PCL REQUIRED)
 
 add_message_files(
   FILES
@@ -45,7 +48,7 @@ include_directories(${PCL_INCLUDE_DIRS})
 link_directories(${PCL_LIBRARY_DIRS})
 link_directories(${OpenCV_LIBRARY_DIRS})
 
-add_definitions(${PCL_DEFINITIONS} -std=c++0x -g -O3)
+add_definitions(${PCL_DEFINITIONS} -O3)
 
 add_executable(st_map_node src/main.cpp include/cam_object.cpp include/ar_polygons.cpp include/update_all_polygons.cpp include/vis_errors.cpp)
 
